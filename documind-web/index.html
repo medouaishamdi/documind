@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DocuMind &mdash; semantic document search</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>DocuMind</h1>
+        <p class="tag">Upload documents, ask questions, get cited &amp; fact-checked answers.</p>
+      </div>
+
+      <div class="settings">
+        <label for="apiKey">Gemini API key <span class="muted">(free, no card)</span></label>
+        <input id="apiKey" type="password" placeholder="AIza... or AQ...." autocomplete="off" />
+        <p class="key-help">Get one free at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></p>
+        <label for="apiUrl">API server URL</label>
+        <input id="apiUrl" type="text" value="http://localhost:4500" />
+      </div>
+
+      <div class="upload-block">
+        <input id="fileInput" type="file" accept=".txt,.md,.pdf" hidden />
+        <button id="uploadBtn" class="secondary-btn">+ Upload document</button>
+        <p class="hint">.txt, .md, or .pdf &mdash; under ~300KB of text works best for the free tier.</p>
+        <div id="uploadStatus" class="upload-status" hidden></div>
+      </div>
+
+      <div class="docs-block">
+        <p class="docs-title">Documents <span id="docCount" class="muted"></span></p>
+        <div id="docsList" class="docs-list"></div>
+        <p id="docsEmpty" class="hint">No documents yet &mdash; upload one to start asking questions.</p>
+      </div>
+    </aside>
+
+    <main class="chat-pane">
+      <div id="chatLog" class="chat-log">
+        <div class="welcome">
+          <h2>Ask a question about your documents</h2>
+          <p>Answers are retrieved from your uploaded documents only, cited by source, and checked for how well-supported they actually are.</p>
+        </div>
+      </div>
+
+      <div class="chat-input-bar">
+        <textarea id="questionInput" rows="2" placeholder="Ask something about your uploaded documents..."></textarea>
+        <button id="askBtn" class="primary-btn">Ask</button>
+      </div>
+      <div id="askError" class="error-msg" hidden></div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
