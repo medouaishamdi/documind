@@ -3,10 +3,13 @@ const $ = (id) => document.getElementById(id);
 // ---- Settings ----
 const apiKeyInput = $('apiKey');
 const apiUrlInput = $('apiUrl');
+const modeSelect = $('retrievalMode');
 apiKeyInput.value = localStorage.getItem('documind_api_key') || '';
 apiUrlInput.value = localStorage.getItem('documind_api_url') || 'http://localhost:4500';
 apiKeyInput.addEventListener('change', () => localStorage.setItem('documind_api_key', apiKeyInput.value));
 apiUrlInput.addEventListener('change', () => localStorage.setItem('documind_api_url', apiUrlInput.value));
+modeSelect.value = localStorage.getItem('documind_mode') || 'hybrid';
+modeSelect.addEventListener('change', () => localStorage.setItem('documind_mode', modeSelect.value));
 
 function apiBase() { return apiUrlInput.value.replace(/\/$/, ''); }
 function apiHeaders(extra = {}) {
@@ -110,6 +113,7 @@ function evalBadgeClass(score) {
   return 'low';
 }
 
+let qaCounter = 0;
 askBtn.addEventListener('click', handleAsk);
 questionInput.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) handleAsk();
@@ -125,6 +129,7 @@ async function handleAsk() {
 
   const block = document.createElement('div');
   block.className = 'qa-block';
+  const blockId = `qa${++qaCounter}`;
   block.innerHTML = `
     <div class="q-bubble">${escapeHtml(question)}</div>
     <div class="a-card">
@@ -144,7 +149,7 @@ async function handleAsk() {
     const res = await fetch(`${apiBase()}/api/query`, {
       method: 'POST',
       headers: apiHeaders({ 'Content-Type': 'application/json' }),
-      body: JSON.stringify({ question, documentIds: selectedDocIds() }),
+      body: JSON.stringify({ question, documentIds: selectedDocIds(), mode: modeSelect.value }),
     });
 
     if (!res.ok) {
@@ -177,8 +182,8 @@ async function handleAsk() {
           if (payload.length) {
             sourcesWrap.hidden = false;
             sourcesWrap.innerHTML = `<p class="sources-title">Sources</p>` + payload.map((s) => `
-              <div class="source-item" id="src-${s.n}">
-                <div class="source-head"><span>[${s.n}] ${escapeHtml(s.docName)}</span><span class="source-score">similarity ${s.score}</span></div>
+              <div class="source-item" id="${blockId}-src-${s.n}">
+                <div class="source-head"><span>[${s.n}] ${escapeHtml(s.docName)}</span><span class="source-score">${s.similarity !== null && s.similarity !== undefined ? `similarity ${s.similarity}` : `relevance ${s.score}`}</span></div>
                 <p>${escapeHtml(s.text.slice(0, 220))}${s.text.length > 220 ? '…' : ''}</p>
               </div>
             `).join('');
@@ -207,7 +212,7 @@ async function handleAsk() {
     // wire up citation clicks now that sources are in the DOM
     aText.querySelectorAll('.cite').forEach((el) => {
       el.addEventListener('click', () => {
-        const target = document.getElementById(`src-${el.dataset.n}`);
+        const target = document.getElementById(`${blockId}-src-${el.dataset.n}`);
         if (target) target.scrollIntoView({ behavior: 'smooth', block: 'center' });
       });
     });

@@ -20,6 +20,12 @@
         <p class="key-help">Get one free at <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">aistudio.google.com/apikey</a></p>
         <label for="apiUrl">API server URL</label>
         <input id="apiUrl" type="text" value="http://localhost:4500" />
+        <label for="retrievalMode">Retrieval</label>
+        <select id="retrievalMode">
+          <option value="hybrid">Hybrid: keywords + meaning (recommended)</option>
+          <option value="dense">Embeddings only (meaning)</option>
+          <option value="bm25">BM25 only (keywords)</option>
+        </select>
       </div>
 
       <div class="upload-block">

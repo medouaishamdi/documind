@@ -3,7 +3,9 @@ const BASE = 'https://generativelanguage.googleapis.com/v1beta/models';
 function apiError(res, data) {
   const message = data?.error?.message || `Gemini API request failed (${res.status}).`;
   const err = new Error(message);
-  err.httpStatus = res.status === 400 ? 401 : res.status;
+  // Gemini answers 400 (not 401) for an invalid key; only that case is an auth error.
+  const badKey = res.status === 400 && /api key/i.test(message);
+  err.httpStatus = badKey ? 401 : res.status >= 500 ? 502 : res.status;
   return err;
 }
 
@@ -55,16 +57,7 @@ export async function embedOne({ apiKey, model, text, taskType }) {
   return vec;
 }
 
-export function cosineSimilarity(a, b) {
-  let dot = 0, normA = 0, normB = 0;
-  for (let i = 0; i < a.length; i++) {
-    dot += a[i] * b[i];
-    normA += a[i] * a[i];
-    normB += b[i] * b[i];
-  }
-  if (normA === 0 || normB === 0) return 0;
-  return dot / (Math.sqrt(normA) * Math.sqrt(normB));
-}
+export { cosineSimilarity } from './retrieve.js';
 
 // Streams a plain-text answer via Gemini's SSE endpoint, calling onDelta(text) for each piece.
 export async function streamGenerate({ apiKey, model, systemPrompt, userPrompt, onDelta }) {

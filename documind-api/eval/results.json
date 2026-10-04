@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-04T18:27:47.379Z",
+  "embedModel": null,
+  "chunks": 16,
+  "retrieval": [
+    {
+      "mode": "bm25",
+      "type": "all",
+      "n": 40,
+      "hit1": 0.575,
+      "hit3": 0.75,
+      "hit5": 0.775,
+      "mrr": 0.6690386002886002
+    },
+    {
+      "mode": "bm25",
+      "type": "keyword",
+      "n": 20,
+      "hit1": 0.95,
+      "hit3": 1,
+      "hit5": 1,
+      "mrr": 0.975
+    },
+    {
+      "mode": "bm25",
+      "type": "paraphrase",
+      "n": 20,
+      "hit1": 0.2,
+      "hit3": 0.5,
+      "hit5": 0.55,
+      "mrr": 0.3630772005772006
+    }
+  ],
+  "perQuestion": [
+    {
+      "q": "How many RTT days per year does Brightwell grant?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What is the hotel night limit in Paris?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "How long is the trial period for engineers?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What is the minimum password length and which password manager is used?",
+      "type": "keyword",
+      "bm25": 2
+    },
+    {
+      "q": "What is the meal allowance for dinner on business trips?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "How many weeks of parental leave does the second parent get?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What is the individual training budget?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What is the home-office allowance?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What does error E-07 mean?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What should I do about error E-03?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What does E-20 mean on the display?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What is the range in Turbo mode?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "What is the recommended tyre pressure in bar?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "How long does the battery warranty last, in years or cycles?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "When are brake pads replaced, at what thickness in mm?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "How long are invoices kept?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "Within how many hours is the CNIL notified of a breach?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "Who is the Data Protection Officer?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "Where is the main hosting located?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "How long is video surveillance footage kept?",
+      "type": "keyword",
+      "bm25": 1
+    },
+    {
+      "q": "Can I spend a few weeks working from another country?",
+      "type": "paraphrase",
+      "bm25": 1
+    },
+    {
+      "q": "I'm not feeling well and can't come in tomorrow, who do I warn and by when?",
+      "type": "paraphrase",
+      "bm25": 0
+    },
+    {
+      "q": "What happens to vacation I didn't use by the end of the year?",
+      "type": "paraphrase",
+      "bm25": 11
+    },
+    {
+      "q": "My work computer was stolen on the metro, what now?",
+      "type": "paraphrase",
+      "bm25": 1
+    },
+    {
+      "q": "I think I got a scam message trying to steal my login. What should I do?",
+      "type": "paraphrase",
+      "bm25": 3
+    },
+    {
+      "q": "Do I get money back if I bike to the office?",
+      "type": "paraphrase",
+      "bm25": 9
+    },
+    {
+      "q": "If I quit, how much warning do I have to give?",
+      "type": "paraphrase",
+      "bm25": 0
+    },
+    {
+      "q": "When do raises get decided?",
+      "type": "paraphrase",
+      "bm25": 0
+    },
+    {
+      "q": "How fast can the bike go before the motor stops helping?",
+      "type": "paraphrase",
+      "bm25": 2
+    },
+    {
+      "q": "How long until my bike is fully juiced up?",
+      "type": "paraphrase",
+      "bm25": 7
+    },
+    {
+      "q": "The motor got too hot on a long climb, what should I do?",
+      "type": "paraphrase",
+      "bm25": 3
+    },
+    {
+      "q": "I won't ride during the cold months. How do I keep the power pack healthy?",
+      "type": "paraphrase",
+      "bm25": 2
+    },
+    {
+      "q": "Can I hose the bike down with a Kärcher?",
+      "type": "paraphrase",
+      "bm25": 4
+    },
+    {
+      "q": "How heavy is the bike if I need to lift it onto my car?",
+      "type": "paraphrase",
+      "bm25": 1
+    },
+    {
+      "q": "Is there a way to have the motor help me push the bike up a ramp while walking?",
+      "type": "paraphrase",
+      "bm25": 2
+    },
+    {
+      "q": "You turned down my job application. Do you still have my résumé?",
+      "type": "paraphrase",
+      "bm25": 0
+    },
+    {
+      "q": "I asked for a copy of my information. How long until I hear back?",
+      "type": "paraphrase",
+      "bm25": 0
+    },
+    {
+      "q": "Do you make money by giving my details to advertisers?",
+      "type": "paraphrase",
+      "bm25": 0
+    },
+    {
+      "q": "Can a 12-year-old open an account?",
+      "type": "paraphrase",
+      "bm25": 2
+    },
+    {
+      "q": "Who can I go to if I'm unhappy with how you handled my request?",
+      "type": "paraphrase",
+      "bm25": 1
+    }
+  ],
+  "answers": null
+}

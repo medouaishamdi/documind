@@ -33,7 +33,7 @@ body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-se
 .tag { color: var(--muted); font-size: 0.82rem; margin: 6px 0 0; }
 
 .settings label { font-size: 0.78rem; color: var(--muted); display: block; margin-top: 8px; margin-bottom: 4px; }
-.settings input {
+.settings input, .settings select {
   width: 100%; padding: 9px 10px; border-radius: 9px;
   border: 1px solid var(--border); background: #10131a; color: var(--text); font-size: 0.85rem;
 }
